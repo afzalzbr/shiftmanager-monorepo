@@ -1,0 +1,49 @@
+{
+  "name": "shift-manager-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for Shift Manager - Frontend and Backend",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "setup": "./setup.sh",
+    "install:all": "npm run install:api && npm run install:web",
+    "install:api": "npm install --workspace=packages/api",
+    "install:web": "npm install --workspace=packages/web",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "npm run dev --workspace=packages/api",
+    "dev:web": "npm run start --workspace=packages/web",
+    "start": "npm run dev",
+    "start:api": "npm run start --workspace=packages/api",
+    "start:web": "npm run start --workspace=packages/web",
+    "build": "npm run build:api && npm run build:web",
+    "build:api": "echo 'API build completed'",
+    "build:web": "npm run build --workspace=packages/web",
+    "test": "npm run test:api && npm run test:web",
+    "test:api": "npm run test --workspace=packages/api",
+    "test:web": "npm run test --workspace=packages/web",
+    "clean": "rm -rf node_modules packages/*/node_modules packages/*/build packages/*/dist",
+    "lint": "npm run lint:api && npm run lint:web",
+    "lint:api": "echo 'API linting would go here'",
+    "lint:web": "echo 'Web linting would go here'",
+    "reset": "npm run clean && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [
+    "monorepo",
+    "shift-manager",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb"
+  ]
+}
